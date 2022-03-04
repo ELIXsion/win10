@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>WIN10-UI-DEMO</title>
+    <link rel='Shortcut Icon' type='image/x-icon' href='./img/windows.ico'>
+    <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
+    <link href="./css/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
+    <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="./css/default.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/win10.js"></script>
+    <style>
+        * {
+            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+        }
+        /*磁贴自定义样式*/
+        .win10-block-content-text {
+            line-height: 44px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        Win10.onReady(function () {
+
+            //设置壁纸
+            Win10.setBgUrl({
+                main:'./img/wallpapers/main.jpg',
+                mobile:'./img/wallpapers/mobile.jpg',
+            });
+
+            Win10.setAnimated([
+                'animated flip',
+                'animated bounceIn',
+            ], 0.01);
+
+            setTimeout(function () {
+                Win10.newMsg('欢迎访问<a target="_blank" href="https://elix.vercel.app/">ELIX的博客</a>')
+            }, 2500);
+
+            setTimeout(function () {
+                Win10.openUrl('https://elix.vercel.app/2022/02/28/%E4%B8%80%E9%81%93%E9%80%BB%E8%BE%91%E9%A2%98/','<i class="fa fa-newspaper-o icon red"></i>最新文章',[['300px', '380px'],'rt'])
+            },2000);
+
+
+        });
+
+        //该函数可删除 Orz
+        function win10_forgive_me() {
+            Win10.enableFullScreen();
+            layer.alert('点击展示下一版本特性', {}, function(index){
+                var blue=$('<img src="./img/presentation/bluescreen.jpg" style="position: fixed;width: 100%;height:100%;top:0;z-index:9999999999" />');
+                setTimeout(function () {
+                    $('body').append(blue);
+                },3000);
+                setTimeout(function () {
+                    blue.remove();
+                    Win10.disableFullScreen();
+                    setTimeout(function () {
+                        layer.msg('开个玩笑，别打我');
+
+                    },1000);
+                },7000);
+                layer.close(index);
+            });
+
+        }
+    </script>
+</head>
+<body>
+<div id="win10">
+    <div class="desktop">
+        <div id="win10-shortcuts" class="shortcuts-hidden">
+
+<!--
+
+            <div class="shortcut" onclick="Win10.openUrl('https://aidn.jp/mikutap/','<img class=\'icon\' src=\'./img/icon/win10.png\'/>个人页')">
+                <img class="icon" src="./img/icon/person.png"/>
+                <div class="title">个人页</div>
+            </div>
+
+ -->
+
+            <div class="shortcut" onclick="window.open('https://elix.vercel.app/')">
+                <img class="icon" src="https://elix.vercel.app/mysource/avatar.png"/>
+                <div class="title">ELIX的博客</div>
+            </div>
+
+            <div class="shortcut" onclick="Win10.openUrl('https://guidancepc.vercel.app/','<img class=\'icon\' src=\'./img/icon/win10.png\'/>个人页')">
+                <img class="icon" src="./img/icon/person.png"/>
+                <div class="title">个人页</div>
+            </div>
+            <div class="shortcut" onclick="Win10.openUrl('https://api.edwiv.com/bzsy/','<img class=\'icon\' src=\'./img/icon/doc.png\'/>文章生成器')">
+                <img class="icon" src="./img/icon/doc.png"/>
+                <div class="title">文章生成器</div>
+            </div>
+            <div class="shortcut" onclick="Win10.openUrl('https://aidn.jp/mikutap/','<img class=\'icon\' src=\'./img/icon/win10.png\'/>Mikutap')">
+                <img class="icon" src="./img/icon/mikutap.png"/>
+                <div class="title">Mikutap</div>
+            </div>
+            <div class="shortcut" onclick="Win10.openUrl('http://www.lishiju.net/timeline.html','<img class=\'icon\' src=\'./img/icon/win10.png\'/>历史时间轴')">
+                <img class="icon" src="./img/icon/history.png"/>
+                <div class="title">历史时间轴</div>
+            </div>
+
+<!--
+
+            <div class="shortcut" onclick="Win10.openUrl('https://www.oschina.net/p/win10-ui','<img class=\'icon\' src=\'./img/icon/kyzg.png\'/>开源中国（求支持~）')">
+                <img class="icon" src="./img/icon/kyzg.png"/>
+                <div class="title">开源中国</div>
+            </div>
+            <div class="shortcut" onclick="window.open('https://github.com/yuri2peter/win10-ui/archive/master.zip')">
+                <img class="icon" src="./img/icon/download.png"/>
+                <div class="title">快速获取</div>
+            </div>
+            <div class="shortcut" onclick='Win10.openUrl("./login.html","<i class=\"fa fa-user icon black-green\"></i>示例登录页")'>
+                <i class="fa fa-user icon black-green"></i>
+                <div class="title">示例登录页</div>
+            </div>
+            <div class="shortcut win10-open-window" data-url="win10ui.yuri2.cn/src/contributor.html">
+                <i class="icon fa fa-fw fa-bank red" ></i>
+                <div class="title">名人堂</div>
+            </div>
+
+            <div class="shortcut" onclick='Win10.openUrl("win10ui.yuri2.cn/src/workshop.html","<i class=\"fa fa-gears  icon purple\"></i>创意工坊")'>
+                <i class="fa fa-gears  icon purple"></i>
+                <div class="title">创意工坊</div>
+            </div>
+
+ -->
+
+        </div>
+        <div id="win10-desktop-scene"></div>
+    </div>
+    <div id="win10-menu" class="hidden">
+        <div class="list win10-menu-hidden animated animated-slideOutLeft">
+
+
+<!--
+
+
+            <div class="item"><i class="red icon fa fa-wrench fa-fw"></i><span>API测试</span></div>
+            <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')">父子页沟通</div>
+            <div class="sub-item" onclick="Win10.commandCenterOpen()">打开消息中心</div>
+            <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容(点击我试试)',function() {alert('click')})">发送带回调的消息</div>
+            <div class="sub-item" onclick="Win10.menuClose()">关闭菜单</div>
+            <div class="item" ><i class="blue icon fa fa-gavel fa-fw"></i>辅助工具</div>
+            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-shortcut.html','图标代码生成器')">桌面图标代码生成器</div>
+            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')">磁贴代码生成器</div>
+            <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')">菜单代码生成器</div>
+
+
+ -->
+
+
+            <div class="item" onclick="Win10.aboutUs()"><i class="purple icon fa fa-info-circle fa-fw"></i>关于</div>
+            <div class="item" onclick=" Win10.exit();"><i class="black icon fa fa-power-off fa-fw"></i>关闭</div>
+        </div>
+        <div class="blocks">
+            <div class="menu_group">
+                <div class="title">
+                    常用应用
+                </div>
+                <div loc="1,1" size="6,5" class="block">
+                    <div class="content red detail" >
+                       <a href="https://img.xjh.me/random_img.php?return=302"><img width="264" height="280" style="position: relative;" src="https://img.xjh.me/random_img.php?return=302" /></a>
+                    </div>
+                    <div class="content red cover">
+                        <img width="264" height="280" style="position: relative;top: -50px;" src="https://api.ghser.com/random/pc.php" />
+                    </div>
+                </div>
+                <div loc="1,6" size="4,4" class="block">
+                    <div class="content blue cover" style="font-size: 30px;line-height: 176px;text-align: center">
+                        <i class="fa fa-cloud fa-fw"></i> 天气
+                    </div>
+                    <div class="content detail" style="background-color: rgb(46,147,217)">
+                       <iframe allowtransparency="true" frameborder="0" width="150" height="250" scrolling="no" src="https://tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=0&v=0&d=1&bd=0&k=&f=&ltf=009944&htf=cc0000&q=0&e=1&a=1&c=54511&w=150&h=250&align=center"></iframe>
+                    </div>
+                </div>
+                <div loc="5,6" size="2,2" class="block">
+                    <div class="content">
+                        <img style="display: inline-block;border-radius: 4px" width="88px" src="http://q2.qlogo.cn/headimg_dl?bs=824831811&dst_uin=824831811&src_uin=824831811&fid=824831811&spec=100&url_enc=0&referer=bu_interface&term_type=PC"/>
+                    </div>
+                </div>
+
+<!--
+                <div loc="5,8" size="2,2" class="block" onclick="win10_forgive_me()">
+                    <div class="content red">
+                        <div style="text-align: center;font-size: 30px;line-height: 44px"><i class="fa fa-bug fa-fw"></i></div>
+                        <div style="text-align: center;font-size: 16px;line-height: 44px">别点我</div>
+                    </div>
+                </div>
+-->
+            </div>
+
+            <div class="menu_group">
+                <div class="title">
+                    常用场景
+                </div>
+                <div loc="1,1" size="4,3" class="block">
+                    <div class="content" style="background-color: orangered">
+                        <div class="win10-block-content-text" style="font-size: 26px;line-height: 88px">Unkonwn</div>
+                        <div class="win10-block-content-text">待补充信息</div>
+                    </div>
+                </div>
+
+<!--
+
+                <div loc="5,1" size="2,1" class="block">
+                    <div class="content" style="background-color: green">
+                        <div  class="win10-block-content-text">文字按钮</div>
+                    </div>
+                </div>
+                <div loc="5,2" size="2,2" class="block">
+                    <div class="content">
+                        <img style="width: 40px;height: 40px;margin: 5px auto;display: block" src="./img/icon/baidu.png">
+                        <div class="win10-block-content-text">图标按钮</div>
+                    </div>
+                </div>
+                <div loc="1,4" size="6,3" class="block">
+                    <div class="content" style="background: url('./img/presentation/1.png');background-size: auto">
+                        <div style="line-height:132px;text-align: center;">显示图片</div>
+                    </div>
+                </div>
+                <div loc="1,7" size="2,1" class="block">
+                    <div class="content" style="background-color: grey" onclick="Win10.openUrl('//www.baidu.com')">
+                        <div class="win10-block-content-text">内部链接</div>
+                    </div>
+                </div>
+                <div loc="3,7" size="2,1" class="block">
+                    <div class="content" style="background-color: blue" onclick="window.open('https://www.baidu.com')">
+                        <div class="win10-block-content-text">外部链接</div>
+                    </div>
+                </div>
+
+
+-->
+
+
+            </div>
+        </div>
+        <div id="win10-menu-switcher"></div>
+    </div>
+    <div id="win10_command_center" class="hidden_right">
+        <div class="title">
+            <h4 style="float: left">消息中心 </h4>
+            <span id="win10_btn_command_center_clean_all">全部清除</span>
+        </div>
+        <div class="msgs"></div>
+    </div>
+    <div id="win10_task_bar">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-windows"></span></div>
+            <div class="btn" id="win10-btn-browser"><span class="fa fa-internet-explorer"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time">
+                <!--0:00<br/>-->
+                <!--1993/8/13-->
+            </div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-comment-o"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
